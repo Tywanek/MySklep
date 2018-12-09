@@ -22,11 +22,12 @@ public class Main {
         beerFactory = new BeerFactory();
 
         new AdultObserver(koszyk);
+        new PrinterObserver(koszyk);
 
 
         Pizza rzeznicka = new Pizza.PizzaBuilder()
                 .setName("Rzeznicka")
-                .setPrice(10)
+                .setPrice(30)
                 .setSos(PizzaSos.TOMATO)
                 .setAdditives(PizzaAdditive.DOUBLE_CHEESE)
                 .setAdditives(PizzaAdditive.EXTRA_ONION)
