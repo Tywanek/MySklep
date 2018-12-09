@@ -1,12 +1,17 @@
-public class AdultObserver extends Observer {
+public class AdultObserver extends AlcoObserver {
 
     public AdultObserver(ShoppingBasket subject) {
         this.subject = subject;
-        this.subject.subscribe(this);
+        this.subject.subscribeAdultObserver(this);
     }
 
     @Override
-    void upDate() {
-        System.out.println("UWAGA!!!!");
+    void upDate(User user) {
+        if(user.getUserAge() > 18){
+            System.out.println("Adult observer: Osoba pelnoletnia kupila piwo");
+        }else {
+            System.out.println("Adult observer: UWAGA nieletni!!!!");
+        }
+
     }
 }

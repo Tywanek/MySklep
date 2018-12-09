@@ -4,13 +4,18 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class ShoppingBasket {
-    private List<Observer> observerList = new ArrayList<>();
+    private User user;
+    private AdultObserver adultObserver;
     private List<ShopItem> itemList = new ArrayList<>();
+
+    public ShoppingBasket(User user) {
+        this.user = user;
+    }
 
     void insertItem(ShopItem item) {
         this.itemList.add(item);
         if (item.isForAdult()) {
-            notifyAllObserver();
+            notifyAdultObserver();
         }
     }
 
@@ -26,13 +31,14 @@ public class ShoppingBasket {
         return result;
     }
 
-    public void subscribe(Observer observer) {
-        this.observerList.add(observer);
+    public void subscribeAdultObserver(AdultObserver observer) {
+        this.adultObserver =observer;
     }
 
-    public void notifyAllObserver() {
-        for (Observer item : observerList) {
-            item.upDate();
+    public void notifyAdultObserver(){
+        if (adultObserver!=null){
+            adultObserver.upDate(user);
         }
     }
+
 }

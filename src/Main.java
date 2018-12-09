@@ -12,10 +12,17 @@ public class Main {
 
 
     public static void main(String[] args) {
-        koszyk = new ShoppingBasket();
+
+        User andrzej = new User.UserBuilder()
+                .setUserName("Andrzej")
+                .setUserAge(15)
+                .build();
+
+        koszyk = new ShoppingBasket(andrzej);
         beerFactory = new BeerFactory();
 
         new AdultObserver(koszyk);
+
 
         Pizza rzeznicka = new Pizza.PizzaBuilder()
                 .setName("Rzeznicka")
@@ -32,13 +39,6 @@ public class Main {
         koszyk.insertItem(piwo1);
         koszyk.insertItem(piwo2);
 
-        User andrzej = new User.UserBuilder()
-                .setUserName("Andrzej")
-                .setUserAge(30)
-                .build();
-
-        System.out.println("User name: "+andrzej.getUserName());
         System.out.println("Cena total: " + koszyk.getTotalPrice());
-        System.out.println("Piwo 1:  " + piwo1.getName() + piwo1.getPrice());
     }
 }
